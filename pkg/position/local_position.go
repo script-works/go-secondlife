@@ -31,12 +31,14 @@ import (
 	"strings"
 )
 
-const localItems int = 3
+const numItems int = 3
+
+type index int
 
 const (
-	iLocalX int = 0
-	iLocalY int = 1
-	iLocalZ int = 2
+	iX index = 0
+	iY index = 1
+	iZ index = 2
 )
 
 // LocalPosition represents local coordinates within a region
@@ -94,22 +96,22 @@ func NewLocalPositionFromVector(vector string) (*LocalPosition, error) {
 	}
 
 	items := strings.Split(strings.Trim(trimmed, "<>"), ",")
-	if len(items) != localItems {
+	if len(items) != numItems {
 		err := errors.New("invalid argument")
 		return nil, err
 	}
 
-	posX, err := strconv.ParseFloat(strings.TrimSpace(items[iLocalX]), 32)
+	posX, err := strconv.ParseFloat(strings.TrimSpace(items[iX]), 32)
 	if err != nil {
 		return nil, err
 	}
 
-	posY, err := strconv.ParseFloat(strings.TrimSpace(items[iLocalY]), 32)
+	posY, err := strconv.ParseFloat(strings.TrimSpace(items[iY]), 32)
 	if err != nil {
 		return nil, err
 	}
 
-	posZ, err := strconv.ParseFloat(strings.TrimSpace(items[iLocalZ]), 32)
+	posZ, err := strconv.ParseFloat(strings.TrimSpace(items[iZ]), 32)
 	if err != nil {
 		return nil, err
 	}

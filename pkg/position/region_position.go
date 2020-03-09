@@ -47,10 +47,10 @@ func NewRegionPosition(x uint32, y uint32) (*RegionPosition, error) {
 		return nil, err
 	}
 
-	c := new(RegionPosition)
+	r := new(RegionPosition)
 
-	c.x = x
-	c.y = y
+	r.x = x
+	r.y = y
 
-	return c, nil
+	return r, nil
 }
